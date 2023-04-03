@@ -30,6 +30,11 @@
         <sugar-toolitem id="activity-button"></sugar-toolitem>
 
         <!-- Add more buttons here -->
+        <sugar-toolitem
+          id="add-button"
+          title="Add Pawn"
+          v-on:click="onAddClick"
+        ></sugar-toolitem>
 
         <!-- Toolitems with class="pull-right" will be right aligned -->
         <sugar-toolitem
@@ -43,6 +48,15 @@
         <h1>{{ displayText }}</h1>
       </div>
 
+      <div id="pawns">
+        <pawn
+          class="pawn"
+          v-for="(pawn, i) in pawns"
+          v-bind:key="i"
+          v-bind:colors="pawn"
+        ></pawn>
+      </div>
+
       <sugar-activity
         ref="SugarActivity"
         v-on:initialized="initialized"
@@ -51,6 +65,7 @@
 
     <script src="js/components/SugarActivity.js"></script>
     <script src="js/components/SugarToolbar.js"></script>
+    <script src="js/Pawn.js"></script>
     <script src="js/activity.js"></script>
   </body>
 </html>
